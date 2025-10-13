@@ -1,5 +1,5 @@
 'use client'
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { TableContainer, Paper, Table, TableBody, TableRow, TableCell, TextField, Button } from "@mui/material";
 import { Users } from "@/shared/model/User.model";
 import { createUser, updateUser } from "@/data/http.services";
@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 const CreateUpdate = () => {
       const pathname = usePathname(); 
-      const router = useRouter();
       const userData:Users=useSelector((state:any)=>state.User)
       const {
     register,
@@ -16,7 +15,6 @@ const CreateUpdate = () => {
     reset,
     formState: {errors}
 }=useForm<Users>();
-// const location=useLocation();
 
 useEffect(()=>{
 if (pathname==='/users/update'){
