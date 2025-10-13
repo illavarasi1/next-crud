@@ -8,27 +8,27 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-const UserGrid=()=>{
+const UserGrid = () => {
     const router = useRouter();
     const [usersData, setUsersData] = useState<Users[]>([]);
-    useEffect(()=>{
-      getUsers().then((data) => setUsersData(data));
-    },[])
-      const dispatch = useDispatch();
-      
+    useEffect(() => {
+        getUsers().then((data) => setUsersData(data));
+    }, [])
+    const dispatch = useDispatch();
+
     const onViewClick = (user: Users) => {
         dispatch(setUserData(user))
-    router.push('/users/view')
+        router.push('/users/view')
     }
-     const onDeleteClick = async (user: Users) => {
+    const onDeleteClick = async (user: Users) => {
         await deleteUser(user.id)
     }
-    
+
     const onUpdateClick = (user: Users) => {
         dispatch(setUserData(user))
-       router.push('/users/update')
+        router.push('/users/update')
     }
-     return (
+    return (
         <>
             <section className="flex flex-col justify-center items-start p-10">
                 <Button variant="outlined" onClick={() => router.push("/users/create")}>CreateUser </Button>
@@ -45,7 +45,7 @@ const UserGrid=()=>{
                         </TableHead>
                         <TableBody>
                             {
-                             usersData.map((data,index) => {
+                                usersData.map((data, index) => {
                                     return (
                                         <TableRow key={index}>
                                             <TableCell align="center">{data.name}</TableCell>
@@ -53,9 +53,9 @@ const UserGrid=()=>{
                                             <TableCell align="center">{data.phone}</TableCell>
                                             <TableCell align="center">{data.website}</TableCell>
                                             <TableCell className="flex flex-row justify-center items-center gap-5">
-                                                <Button variant="outlined"  onClick={() => onViewClick(data)}>view</Button>
-                                                <Button variant="outlined" onClick={()=>onUpdateClick(data)}>Update</Button>
-                                                <Button variant="outlined" onClick={()=>onDeleteClick(data)}>Delete </Button>
+                                                <Button variant="outlined" onClick={() => onViewClick(data)}>view</Button>
+                                                <Button variant="outlined" onClick={() => onUpdateClick(data)}>Update</Button>
+                                                <Button variant="outlined" onClick={() => onDeleteClick(data)}>Delete </Button>
                                             </TableCell>
 
                                         </TableRow>
