@@ -6,9 +6,10 @@ import { createUser, updateUser } from "@/data/http.services";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import type { RootState } from "../core/store";
 const CreateUpdate = () => {
       const pathname = usePathname(); 
-      const userData:Users=useSelector((state:any)=>state.User)
+      const userData:Users=useSelector((state: RootState)=>state.User)
       const {
     register,
     handleSubmit,
@@ -31,7 +32,6 @@ reset(userData)
 
 
 return(
-//    router.push('/users/create')
 <section className="flex justify-center items-center">
                 <form onSubmit={handleSubmit(onsubmit)} className="border border-blue-400 rounded-md p-5 m-5 w-[50%]">
                 <TableContainer component={Paper} >

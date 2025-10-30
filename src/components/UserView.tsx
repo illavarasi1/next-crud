@@ -1,10 +1,11 @@
 'use client';
+import { RootState } from "@/core/store";
 import { Users } from "@/shared/model/User.model";
 import { useSelector } from "react-redux";
 
 const UserView=()=>{
  
-    const userData:Users=useSelector((state:any)=>state.User)
+    const userData:Users=useSelector((state:RootState)=>state.User)
     return(
         <>
         <section className="flex flex-col justify-center items-center">

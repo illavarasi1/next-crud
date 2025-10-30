@@ -9,4 +9,5 @@ const store=configureStore({
 User:UserSlice
     }
 })
+export type RootState = ReturnType<typeof store.getState>;
 export default store;
